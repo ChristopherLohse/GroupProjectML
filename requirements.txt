@@ -1,0 +1,8 @@
+beautifulsoup4
+requests
+pandas
+ipykernel
+wordcloud 
+scikit-learn
+nltk 
+seaborn
