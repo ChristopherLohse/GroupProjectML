@@ -165,7 +165,7 @@ def get_error_plot(models, values, x_train, y_train, title='', x_label=''):
     return fig, best_model
 
 
-c_values = [0.0001, 0.001, 0.01, 0.1, 1, 10]
+c_values = [0.0001, 0.001, 0.01, 0.1, 1, 10, 20]
 k_values = [1, 11, 21, 51, 101, 201]
 
 
@@ -273,7 +273,11 @@ for (coef_1, fn_1), (coef_2, fn_2) in top:
     df = df.append({"coef_1": coef_1, "fn_1": fn_1,
                    "coef_2": coef_2, "fn_2": fn_2}, ignore_index=True)
 
-
+# get number of features for unigram and bigram models
+n_features_ug = len(best_ridge_ug.named_steps['vect'].get_feature_names())
+n_features_bg = len(best_ridge_bg.named_steps['vect'].get_feature_names())
+print("Number of features for unigram model: ", n_features_ug)
+print("Number of features for bigram model: ", n_features_bg)
 # make a barplot with the most important features color positive and negative in blue and red in the same plot
 # !pip install seaborn
 

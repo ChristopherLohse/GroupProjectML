@@ -2,6 +2,9 @@
 import bs4 as bs
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+# set style tp seaborn
+plt.style.use('seaborn-whitegrid')
 # read the file
 with open("data/coffee_review.txt", "r") as f:
     texts = f.read()
@@ -61,6 +64,14 @@ df.dropna(inplace=True)
 # remove null values from the text
 df = df[df['text'].notnull()]
 
+# boxplot of the ratings save the figure
+plt.boxplot(df["rating"])
+# change the y axis label
+plt.ylabel("Rating")
+# remove x axis label and ticks
+plt.xlabel("")
+plt.xticks([])
+plt.savefig("plots/boxplot.png", dpi=300, bbox_inches='tight')
 
 # save the dataframe
 df.to_csv("data/coffee_review.csv", index=False)
